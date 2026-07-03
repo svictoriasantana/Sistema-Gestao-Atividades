@@ -34,15 +34,18 @@ O projeto segue o padrão arquitetural em camadas (`Layered Architecture`):
 
 1. **Clone o repositório:**
    ```bash
-   git clone [https://github.com/SEU_USUARIO/gestao-gepa.git](https://github.com/SEU_USUARIO/gestao-gepa.git)
+   git clone https://github.com/svictoriasantana/Sistema-Gestao-Atividades
    
 2. **Configure o Banco de Dados:**
-   Crie um banco de dados no MySQL chamado gepa_db. O Spring Boot (application.properties) está configurado para criar todas as
-   tabelas automaticamente (ddl-auto=update).
+   - Crie um banco de dados no MySQL chamado gepa_db.
+   - Na pasta src/main/resources/, localize o arquivo application.properties.example.
+   - Renomeie este arquivo para application.properties.
+   - Abra o arquivo e preencha as variáveis spring.datasource.username e spring.datasource.password com as credenciais do seu MySQL local.
    
 4. **Execute a aplicação:**
-   Rode a classe principal GepaApplication.java na sua IDE. O servidor iniciará na porta 8080.
+   Rode a classe principal GepaApplication.java na sua IDE. O servidor iniciará na porta 8080 (O Hibernate se encarregará de criar todas    as tabelas automaticamente).
    
 5. **Acesse a Documentação (Swagger):**
    Com o sistema rodando, abra o navegador e acesse a interface interativa de testes:
+   ```bash
    http://localhost:8080/swagger-ui/index.html
