@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+#### Conexão com o Banco de Dados ###
+src/main/resources/application.properties
