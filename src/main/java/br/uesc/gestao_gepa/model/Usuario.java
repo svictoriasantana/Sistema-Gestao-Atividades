@@ -1,5 +1,12 @@
 package br.uesc.gestao_gepa.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.EqualsAndHashCode;
+
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,10 +30,16 @@ public class Usuario {
     private String email;
 
     @Column(nullable = false, length = 255) // Tamanho maior para armazenar senhas criptografadas
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String senha;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     private PerfilUsuario perfil;
+
+    @EqualsAndHashCode.Exclude
+    @ManyToMany(mappedBy = "bolsistas")
+    @JsonIgnoreProperties({"bolsistas", "coordenadora"}) // Impede o loop no sentido inverso
+    private Set<Projeto> projetos = new HashSet<>();
 }
 
